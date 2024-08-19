@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop and Soil Management System</title>
+    <script>
+        function updateFields() {
+            const action = document.getElementById('action').value;
+            document.getElementById('recommend_crops_fields').style.display = action === 'recommend_crops' ? 'block' : 'none';
+            document.getElementById('add_soil_data_fields').style.display = action === 'add_soil_data' ? 'block' : 'none';
+            document.getElementById('identify_disease_fields').style.display = action === 'identify_disease' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <h1>Crop and Soil Management System</h1>
+    <form id="apiForm" method="POST" enctype="multipart/form-data">
+        <label for="action">Action:</label>
+        <select id="action" name="action" onchange="updateFields()" required>
+            <option value="">Select an action</option>
+            <option value="recommend_crops">Recommend Crops</option>
+            <option value="add_soil_data">Add Soil Data</option>
+            <option value="identify_disease">Identify Disease</option>
+        </select><br><br>
+
+        <div id="recommend_crops_fields" style="display:none;">
+            <label for="soil_type">Soil Type:</label>
+            <input type="text" id="soil_type" name="soil_type"><br><br>
+        </div>
+
+        <div id="add_soil_data_fields" style="display:none;">
+            <label for="soil_type">Soil Type:</label>
+            <input type="text" id="soil_type" name="soil_type"><br><br>
+            <label for="pH">pH:</label>
+            <input type="text" id="pH" name="pH"><br><br>
+            <label for="moisture">Moisture:</label>
+            <input type="text" id="moisture" name="moisture"><br><br>
+        </div>
+
+        <div id="identify_disease_fields" style="display:none;">
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image"><br><br>
+        </div>
+
+        <button type="submit">Send Request</button>
+    </form>
+</body>
+</html>
